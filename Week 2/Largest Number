@@ -1,0 +1,20 @@
+class Solution {
+public:
+    string largestNumber(vector<int>& nums) {
+            string ans;
+        auto larger = [&](const int& a, const int& b){
+            string x = to_string(a);
+            string y = to_string(b);
+            return (x+y) > (y+x);
+        };
+        
+        sort(nums.begin(), nums.end(), larger);
+        if(nums[0] == 0)
+            return "0";
+            
+        for(int& x : nums)
+            ans += to_string(x);
+        
+        return ans;
+    }
+};
